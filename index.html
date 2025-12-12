@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>聖誕快樂！🎄</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      width: 90%;
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+      z-index: 10;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      margin: 0 0 20px;
+      text-shadow: 0 0 10px #ff0000, 0 0 20px #00ff00;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    p {
+      font-size: 1.4rem;
+      line-height: 1.8;
+      margin: 20px 0;
+    }
+
+    .tree {
+      font-size: 80px;
+      margin: 20px 0;
+      animation: twinkle 3s infinite;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ff0000, 0 0 20px #00ff00; }
+      to { text-shadow: 0 0 20px #fff, 0 0 30px #ff8c00; }
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    /* 下雪效果 */
+    .snowflake {
+      position: absolute;
+      top: -10px;
+      color: #fff;
+      font-size: 1.5em;
+      pointer-events: none;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>聖誕快樂！</h1>
+    <div class="tree">🎄</div>
+    <p>親愛的太太與呈呈，</p>
+    <p>在這個充滿溫暖與光芒的聖誕季節<br>
+       願你被愛包圍，被幸福填滿<br>
+       新的一年健康快樂、萬事如意！</p>
+    <p>Merry Christmas & Happy New Year! 🎅✨</p>
+    <p style="margin-top:30px;font-size:1rem;">愛你的 建安 ❤️</p>
+  </div>
+
+  <!-- 下雪 -->
+  <script>
+    // 產生雪花
+    function createSnowflake() {
+      const snowflake = document.createElement('div');
+      snowflake.classList.add('snowflake');
+      snowflake.textContent = ['❅', '❆', '✺', '✼', '✽'][Math.floor(Math.random()*5)];
+      snowflake.style.left = Math.random() * 100 + 'vw';
+      snowflake.style.animationDuration = Math.random() * 5 + 5 + 's';
+      snowflake.style.opacity = Math.random() * 0.5 + 0.5;
+      snowflake.style.fontSize = Math.random() * 20 + 10 + 'px';
+      document.body.appendChild(snowflake);
+
+      setTimeout(() => {
+        snowflake.remove();
+      }, 10000);
+    }
+
+    setInterval(createSnowflake, 150);
+
+    // 背景音樂（點擊卡片才會播放，符合瀏覽器政策）
+    const music = new Audio('https://cdn.pixabay.com/download/audio/2022/11/14/audio_61187b528e.mp3?filename=jingle-bells-8-bit-122886.mp3');
+    music.loop = true;
+
+    document.querySelector('.card').addEventListener('click', () => {
+      music.play().catch(e => console.log("音樂播放失敗（瀏覽器限制）"));
+    });
+  </script>
+
+  <!-- 點擊卡片會播放 Jingle Bells 8-bit 版（免版權） -->
+  <div style="position:fixed;bottom:10px;right:10px;font-size:0.8em;opacity:0.6;">
+    🎵 點擊卡片可播放聖誕音樂喔～
+  </div>
+
+</body>
+</html>
